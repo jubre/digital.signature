@@ -181,28 +181,8 @@ public final class KeyTool2 {
         collator.setStrength(Collator.PRIMARY);
     };
 
-    public KeyTool2() { }
-
-    public static void main(String[] args) throws Exception {
-        KeyTool2 kt = new KeyTool2();
-        
-        args = new String[13];
-        args[0] = "-genkeypair";
-        args[1] = "-dname";
-        args[2] = "cn=Junior Corman Medina, ou=GobConsultX, o=GobConsultX, c=PE";
-        args[3] = "-alias";
-        args[4] = "business";
-        args[5] = "-keypass";
-        args[6] = "kpi135";
-        args[7] = "-keystore";
-        args[8] = "keystore.ks";
-        args[9] = "-storepass";;
-        args[10] = "ab987c";
-        args[11] = "-validity";
-        args[12] = "180";
-        
-        kt.run(args, System.out);
-    }
+    public KeyTool2() {
+    }    
 
     public void run(String[] args, PrintStream out) throws Exception {
         try {

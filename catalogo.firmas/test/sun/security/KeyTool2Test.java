@@ -1,5 +1,9 @@
 package sun.security;
 
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,12 +29,15 @@ public class KeyTool2Test {
         args[5] = "-keypass";
         args[6] = "kpi135";
         args[7] = "-keystore";
-        args[8] = "store-firmas/keystore_20130414_1251.ks";
+        args[8] = "store-firmas/keystore_20130414_2310.ks";
         args[9] = "-storepass";;
         args[10] = "ab987c";
         args[11] = "-validity";
         args[12] = "180";
         
         keyTool2.run(args, System.out);
+        
+        File f = new File(args[8]);
+		assertTrue(f.exists());
 	} 
 }
