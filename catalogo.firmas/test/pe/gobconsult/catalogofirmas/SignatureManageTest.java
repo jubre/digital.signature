@@ -1,6 +1,9 @@
 package pe.gobconsult.catalogofirmas;
 
+import java.io.File;
+
 import org.junit.Test;
+import static org.junit.Assert.assertTrue;
 
 public class SignatureManageTest {
 
@@ -13,7 +16,7 @@ public class SignatureManageTest {
 		String clavePublica = "clavePublica";
 		String nombreOrganizacion = "GobConsult SA";
 		String ubicacionAlmacenamiento = "store-firmas";
-		String nombreArchivoFirma = "keystore-20121230-02.ks";
+		String nombreArchivoFirma = "keystore_20130414_2308.ks";
 		String tiempoValidez = "360";
 
 		signatureManage = new SignatureManage(nombreUsuario,
@@ -21,5 +24,9 @@ public class SignatureManageTest {
 				ubicacionAlmacenamiento, nombreArchivoFirma, tiempoValidez);
 
 		signatureManage.generarFirma();
+		
+		File f = new File(ubicacionAlmacenamiento + "/" + nombreArchivoFirma);
+		assertTrue(f.exists());		
 	}
 }
+
