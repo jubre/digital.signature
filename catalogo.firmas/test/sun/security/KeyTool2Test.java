@@ -29,7 +29,7 @@ public class KeyTool2Test {
         args[5] = "-keypass";
         args[6] = "kpi135";
         args[7] = "-keystore";
-        args[8] = "store-firmas/keystore_20130414_2310.ks";
+        args[8] = "store-firmas/keystore_20130414_2327.ks";
         args[9] = "-storepass";;
         args[10] = "ab987c";
         args[11] = "-validity";
