@@ -1,0 +1,41 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SignatureWriteWSService WSDL service -->
+
+  <service name="SignatureWriteWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ejecutorfirmas.gobconsult.pe"/>
+      <parameter name="wsdlServiceElement" value="SignatureWriteWSService"/>
+      <parameter name="schemaQualified" value="http://ejecutorfirmas.gobconsult.pe"/>
+      <parameter name="wsdlServicePort" value="SignatureWriteWS"/>
+      <parameter name="className" value="pe.gobconsult.ejecutorfirmas.SignatureWriteWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="SignatureWriteWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="signFile" qname="operNS:signFile" xmlns:operNS="http://ejecutorfirmas.gobconsult.pe" returnQName="retNS:signFileReturn" xmlns:retNS="http://ejecutorfirmas.gobconsult.pe" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:rutaSalidaPdfFile" xmlns:pns="http://ejecutorfirmas.gobconsult.pe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:rutaEntradaPdfFile" xmlns:pns="http://ejecutorfirmas.gobconsult.pe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:rutaFirmaDigitalFile" xmlns:pns="http://ejecutorfirmas.gobconsult.pe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:clavePublica" xmlns:pns="http://ejecutorfirmas.gobconsult.pe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:clavePrivada" xmlns:pns="http://ejecutorfirmas.gobconsult.pe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="signFileByFirmante" qname="operNS:signFileByFirmante" xmlns:operNS="http://ejecutorfirmas.gobconsult.pe" returnQName="retNS:signFileByFirmanteReturn" xmlns:retNS="http://ejecutorfirmas.gobconsult.pe" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:rutaSalidaPdfFile" xmlns:pns="http://ejecutorfirmas.gobconsult.pe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:rutaEntradaPdfFile" xmlns:pns="http://ejecutorfirmas.gobconsult.pe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:rutaFirmaDigitalFile" xmlns:pns="http://ejecutorfirmas.gobconsult.pe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:clavePublica" xmlns:pns="http://ejecutorfirmas.gobconsult.pe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:clavePrivada" xmlns:pns="http://ejecutorfirmas.gobconsult.pe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:numeroFirmante" xmlns:pns="http://ejecutorfirmas.gobconsult.pe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="signFileByFirmante signFile"/>
+
+  </service>
+</deployment>

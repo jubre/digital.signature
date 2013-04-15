@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ejecutorfirmas.gobconsult.pe" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ejecutorfirmas.gobconsult.pe" xmlns:intf="http://ejecutorfirmas.gobconsult.pe" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ejecutorfirmas.gobconsult.pe" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="signFile">
+    <complexType>
+     <sequence>
+      <element name="rutaSalidaPdfFile" type="xsd:string"/>
+      <element name="rutaEntradaPdfFile" type="xsd:string"/>
+      <element name="rutaFirmaDigitalFile" type="xsd:string"/>
+      <element name="clavePublica" type="xsd:string"/>
+      <element name="clavePrivada" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signFileResponse">
+    <complexType>
+     <sequence>
+      <element name="signFileReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signFileByFirmante">
+    <complexType>
+     <sequence>
+      <element name="rutaSalidaPdfFile" type="xsd:string"/>
+      <element name="rutaEntradaPdfFile" type="xsd:string"/>
+      <element name="rutaFirmaDigitalFile" type="xsd:string"/>
+      <element name="clavePublica" type="xsd:string"/>
+      <element name="clavePrivada" type="xsd:string"/>
+      <element name="numeroFirmante" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signFileByFirmanteResponse">
+    <complexType>
+     <sequence>
+      <element name="signFileByFirmanteReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="signFileResponse">
+
+      <wsdl:part element="impl:signFileResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="signFileByFirmanteResponse">
+
+      <wsdl:part element="impl:signFileByFirmanteResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="signFileByFirmanteRequest">
+
+      <wsdl:part element="impl:signFileByFirmante" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="signFileRequest">
+
+      <wsdl:part element="impl:signFile" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SignatureWriteWS">
+
+      <wsdl:operation name="signFile">
+
+         <wsdl:input message="impl:signFileRequest" name="signFileRequest"/>
+
+         <wsdl:output message="impl:signFileResponse" name="signFileResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signFileByFirmante">
+
+         <wsdl:input message="impl:signFileByFirmanteRequest" name="signFileByFirmanteRequest"/>
+
+         <wsdl:output message="impl:signFileByFirmanteResponse" name="signFileByFirmanteResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SignatureWriteWSSoapBinding" type="impl:SignatureWriteWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="signFile">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="signFileRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="signFileResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signFileByFirmante">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="signFileByFirmanteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="signFileByFirmanteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SignatureWriteWSService">
+
+      <wsdl:port binding="impl:SignatureWriteWSSoapBinding" name="SignatureWriteWS">
+
+         <wsdlsoap:address location="http://localhost:8080/ejecutor.firmas.ws/services/SignatureWriteWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
